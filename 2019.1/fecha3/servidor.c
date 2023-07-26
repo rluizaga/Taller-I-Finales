@@ -63,7 +63,7 @@ int main() {
 
     printf("Cliente conectado\n");
 
-    char buffer[] = "[1+2+3][1+2][]";
+    char buffer[] = "[124+20+32][11+26][]";
     if (send(client_socket, buffer, sizeof(buffer)-1, 0) == -1) {
         perror("Error al enviar respuesta al cliente");
         return 1;
