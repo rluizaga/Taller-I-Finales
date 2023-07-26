@@ -72,6 +72,7 @@ int main() {
             }
             in_brackets = false;
         } else if (in_brackets) {
+            // Sumar los números dentro del paquete
             if(buffer != '+') {
                 sum += buffer;
             }
