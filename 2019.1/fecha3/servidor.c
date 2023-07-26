@@ -63,8 +63,8 @@ int main() {
 
     printf("Cliente conectado\n");
 
-    char buffer[BUFFER_SIZE] = {'[', 1, '+', 2, '+', 3, ']', '[', 1, '+', 2, ']', '[', ']'};
-    if (send(client_socket, buffer, BUFFER_SIZE, 0) == -1) {
+    char buffer[] = "[1+2+3][1+2][]";
+    if (send(client_socket, buffer, sizeof(buffer)-1, 0) == -1) {
         perror("Error al enviar respuesta al cliente");
         return 1;
     }
