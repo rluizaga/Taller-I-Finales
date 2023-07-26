@@ -90,6 +90,8 @@ int main() {
         }
     }
 
+    // Detener todas las operaciones de lectura y escritura en el socket utilizando
+    shutdown(client_socket, SHUT_RDWR);
     // Cerrar el socket y finalizar el cliente
     close(client_socket);
 
