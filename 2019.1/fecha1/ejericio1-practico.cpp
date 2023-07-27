@@ -60,6 +60,7 @@ int main() {
     Persona juan;
     juan.setValores(100,111);
     Persona pedro(std::move(juan));
+    // Aca usar un metodo para juan ya no tiene sentido porque le robamos su "recurso".  
     juan.printPersona();
     pedro.printPersona();
 }
