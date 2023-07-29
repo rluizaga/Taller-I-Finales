@@ -1,3 +1,9 @@
+/*
+Escriba un programa que reciba por línea de comandos un Puerto y una IP. El programa debe 
+aceptar una unica conexión e imprimir en stdout todo lo recibido. Al recibir el texto ‘FIN’ debe 
+finalizar el programa sin imprimir dicho texto.
+*/
+
 #include <cstring>
 #include <iostream>
 #include <netdb.h>
