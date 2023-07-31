@@ -40,7 +40,7 @@ Resuelto.
 
 **5) Declare una clase de elección libre. Incluya todos los campos de datos requeridos con su correcta exposición/publicación, y los operadores ++, -, ==, >> (carga), << (impresión), constructor move y operador float().**  
 
-```
+```c++
 #include <iostream>
 
 class Numero {
@@ -119,7 +119,7 @@ Ejemplo:
 
 Supongamos que deseamos definir una macro simple para calcular el cuadrado de un número. Aplicando las buenas prácticas mencionadas, la macro se vería así:
 
-```
+```c++
 #include <stdio.h>
 
 #define SQUARE(x) ((x) * (x))
