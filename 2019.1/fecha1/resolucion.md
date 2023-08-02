@@ -154,6 +154,7 @@ Un lock RAII (Resource Acquisition Is Initialization) es una clase que maneja au
 
 Esta técnica evita el riesgo de dejar un hilo bloqueado (deadlock), ya que el unlock se realizará automáticamente incluso si se lanza una excepción en el código protegido por el lock. Además, la implementación del lock RAII promueve una programación más segura y limpia, ya que el programador no necesita preocuparse explícitamente por liberar el lock al salir de un bloque protegido por el mutex. Al utilizar el lock RAII, el código es más resistente a errores y más fácil de mantener, ya que la liberación del recurso se asegura mediante el mecanismo de la destrucción automática del objeto RAII al finalizar el ámbito.
 
-  **10) ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en términos de mantener el programa ‘vivo’ ?**  
+**10) ¿Qué significa que una función es blocante?¿Cómo subsanaría esa limitación en términos de mantener el programa ‘vivo’ ?**  
 
-  Que una funcion sea bloqueante significa que se queda esperando hasta que se cumpla una tarea o hasta obtener un resultado. Para mantener el programa vivo, pueden agregarse hilos para ejecutar concurrentemente aquello que deba seguir ejecutandose, mientras que otro hilo es el que se queda esperando.
+Una función es considerada "bloqueante" cuando su ejecución detiene temporalmente la ejecución del programa hasta que se complete la tarea que realiza. 
+Para garantizar que el programa se mantenga vivo y receptivo a pesar de las funciones bloqueantes, una estrategia común es utilizar hilos (threads). Los hilos permiten que múltiples tareas se ejecuten concurrentemente. Puedes diseñar el programa para que las tareas bloqueantes se ejecuten en un hilo separado, mientras que otras partes del programa continúan ejecutándose en hilos adicionales. Esto significa que mientras un hilo se bloquea esperando una tarea, otros hilos pueden seguir trabajando y respondiendo a eventos.
