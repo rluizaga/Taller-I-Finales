@@ -1,8 +1,6 @@
 **1) ¿Qué es una macro de C? Enumere buenas prácticas para su definición.**
 
-Una macro en C es una secuencia de código que se define utilizando la directiva del preprocesador "#define". Las macros son una forma de realizar sustituciones de texto en el código fuente antes de que comience la fase de compilación. Cuando el preprocesador encuentra una macro en el código, la reemplaza con su definición antes de que el compilador comience a analizar el código.
-
-Las macros pueden ser útiles para definir constantes, realizar operaciones simples o crear código repetitivo, pero también pueden ser propensas a errores y difíciles de depurar si no se utilizan correctamente. Aquí hay algunas buenas prácticas para definir macros en C:
+Una macro en C es una secuencia de código que se define utilizando la directiva del preprocesador "#define". Las macros son una forma de realizar sustituciones de texto en el código fuente antes de que comience la fase de compilación. Aquí hay algunas buenas prácticas para definir macros en C:
 
 - Usar Nombres en Mayúsculas: Es una convención común en C utilizar nombres en mayúsculas para las macros para distinguirlas fácilmente de las variables y funciones en el código. Esto ayuda a mejorar la legibilidad y facilita la identificación de macros en el código.
 
@@ -93,24 +91,23 @@ Complex complex_divide(Complex a, Complex b);
 **c) Un atributo de clase static.**
 
 a) Una variable global static:
+- Inicialización: Una variable global static se inicializa solo una vez, en el momento en que se asigna memoria estática al programa, antes de que comience la ejecución.
+- Comportamiento: La variable global static tiene un ámbito local al archivo donde se define, lo que significa que solo es accesible dentro de ese archivo. La variable mantiene su valor entre llamadas a funciones y conserva su estado incluso después de que la función que la inicializó haya terminado.
+- Área de memoria: Reside en el Data Segment (también conocido como Static Data Segment) del programa, que es una región de memoria destinada a almacenar variables globales y estáticas.
 
-Inicialización: Una variable global static se inicializa solo una vez, en el momento en que se asigna memoria estática al programa, antes de que comience la ejecución.
-Comportamiento: La variable global static tiene un ámbito local al archivo donde se define, lo que significa que solo es accesible dentro de ese archivo. La variable mantiene su valor entre llamadas a funciones y conserva su estado incluso después de que la función que la inicializó haya terminado.
-Área de memoria: Reside en el Data Segment (también conocido como Static Data Segment) del programa, que es una región de memoria destinada a almacenar variables globales y estáticas.
 b) Una variable local static:
+- Inicialización: Una variable local static también se inicializa solo una vez, en el momento en que se asigna memoria estática al programa, pero a diferencia de las variables globales static, la inicialización ocurre la primera vez que se entra en el ámbito de la función donde está definida.
+- Comportamiento: La variable local static tiene un ámbito local a la función donde está definida, lo que significa que solo es accesible dentro de esa función. Sin embargo, a diferencia de las variables locales regulares, la variable static mantiene su valor entre llamadas a la función y conserva su estado incluso después de que la función haya terminado.
+- Área de memoria: Al igual que las variables globales static, las variables locales static también residen en el Data Segment.
 
-Inicialización: Una variable local static también se inicializa solo una vez, en el momento en que se asigna memoria estática al programa, pero a diferencia de las variables globales static, la inicialización ocurre la primera vez que se entra en el ámbito de la función donde está definida.
-Comportamiento: La variable local static tiene un ámbito local a la función donde está definida, lo que significa que solo es accesible dentro de esa función. Sin embargo, a diferencia de las variables locales regulares, la variable static mantiene su valor entre llamadas a la función y conserva su estado incluso después de que la función haya terminado.
-Área de memoria: Al igual que las variables globales static, las variables locales static también residen en el Data Segment.
 c) Un atributo de clase static:
-
-Inicialización: Un atributo de clase static se inicializa cuando se carga la clase en la memoria, antes de que se cree cualquier objeto de la clase.
-Comportamiento: Los atributos de clase static son compartidos por todas las instancias (objetos) de la clase. Esto significa que todas las instancias de la clase comparten el mismo valor de la variable static. Si se modifica el valor de la variable static en una instancia, el cambio se reflejará en todas las demás instancias.
-Área de memoria: Los atributos de clase static se almacenan en el Data Segment junto con las variables globales y static. La única diferencia es que están asociados con la clase y no con un archivo específico.
+- Inicialización: Un atributo de clase static se inicializa cuando se carga la clase en la memoria, antes de que se cree cualquier objeto de la clase.
+- Comportamiento: Los atributos de clase static son compartidos por todas las instancias (objetos) de la clase. Esto significa que todas las instancias de la clase comparten el mismo valor de la variable static. Si se modifica el valor de la variable static en una instancia, el cambio se reflejará en todas las demás instancias.
+- Área de memoria: Los atributos de clase static se almacenan en el Data Segment junto con las variables globales y static. La única diferencia es que están asociados con la clase y no con un archivo específico.
 
 **9) ¿Cómo se logra que 2 threads accedan (lectura/escritura) a un mismo recurso compartido sin que se generen problemas de consistencia? Ejemplifique.**
 
-Para permitir que dos hilos accedan (lectura/escritura) a un mismo recurso compartido sin generar problemas de consistencia, utilizamos un mecanismo de sincronización llamado mutex. El mutex actúa como un cerrojo que permite a un solo hilo adquirirlo a la vez. Cuando un hilo necesita acceder al recurso compartido, adquiere el mutex mediante una operación de 'lock'. Si otro hilo intenta adquirir el mutex mientras está bloqueado por otro hilo, se quedará esperando hasta que el mutex esté disponible nuevamente.
+Para permitir que dos hilos accedan (lectura/escritura) a un mismo recurso compartido sin generar problemas de consistencia, utilizamos un mecanismo de sincronización llamado mutex. Cuando un hilo necesita acceder al recurso compartido, adquiere el mutex mediante una operación de 'lock'. Si otro hilo intenta adquirir el mutex mientras está bloqueado por otro hilo, se quedará esperando hasta que el mutex esté disponible nuevamente.
 
 Una vez que un hilo ha adquirido el mutex, puede acceder al recurso compartido de manera exclusiva y realizar sus operaciones. Una vez que ha terminado de trabajar con el recurso, libera el mutex mediante una operación de 'unlock', permitiendo que otros hilos adquieran el mutex y accedan al recurso compartido.
 
