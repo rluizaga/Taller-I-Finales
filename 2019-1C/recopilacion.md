@@ -1,8 +1,8 @@
 #### Describa con exactitud las sgts declaraciones/definiciones globales: 
 ```
 1. void (*F) (int i);
-1. static void B(float a, float b){}
-1. int *(*C) [5];
+2. static void B(float a, float b){}
+3. int *(*C) [5];
 ```
 En (1) vemos que si cambiamos (*F) por X nos queda ``` void X(int i) ```  que es la firma de una funcion.
 X es una funcion que recibe un entero y no devuelve nada.  Ahora completo: 
